@@ -1,0 +1,23 @@
+ <table>
+  <thead>
+    <tr>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th>Rushing Attempts Per Game Average</th>
+        <th>Longest Rush</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= for rushing_stat <- @rushing_stats do %>
+    <tr>
+      <td> <%= rushing_stat.player %> </td>
+      <td> <%= rushing_stat.team %> </td>
+      <td> <%= rushing_stat.position %> </td>
+      <td> <%= rushing_stat.game_attempts_avg %> </td>
+      <td> <%= rushing_stat.longest_rush %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
