@@ -1,4 +1,4 @@
-defmodule NflRushingWeb.PageLiveTest do
+defmodule NflRushingWeb.StatsLiveTest do
   use NflRushingWeb.ConnCase
 
   import Mock
