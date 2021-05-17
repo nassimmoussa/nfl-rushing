@@ -1,36 +1,3 @@
- <table>
-  <thead>
-    <tr>
-        <th>Player</th>
-        <th>Team</th>
-        <th>Position</th>
-        <th>Rushing Attempts Per Game Average</th>
-        <th>Longest Rush</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for rushing_stat <- @rushing_stats do %>
-      <tr>
-        <td> <%= rushing_stat.player %> </td>
-        <td> <%= rushing_stat.team %> </td>
-        <td> <%= rushing_stat.position %> </td>
-        <td> <%= rushing_stat.game_attempts_avg %> </td>
-        <td> <%= rushing_stat.longest_rush %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "_table.html", assigns %>
 
-<ul class="pagination">
-  <%= if @pagination.page_number > 1 do %>
-    <li class="waves-effect"><a href="#" phx-click="pagination" phx-value-page="<%= @pagination.page_number - 1 %>"><i class="material-icons">chevron_left</i></a></li>
-  <% end %>
-  <%= for idx <- pagination_numbers(@pagination.page_number, @pagination.total_pages) do %>
-    <li class="<%= if @pagination.page_number == idx, do: "active" %>">
-      <a href="#" phx-click="pagination" phx-value-page="<%= idx %>"><%= idx %></a>
-    </li>
-  <% end %>
-  <%= if @pagination.page_number < @pagination.total_pages do %>
-    <li class="waves-effect"><a href="#" phx-click="pagination" phx-value-page="<%= @pagination.page_number + 1 %>"><i class="material-icons">chevron_right</i></a></li>
-  <% end %>
-</ul>
+<%= render "_pagination.html", assigns %>
