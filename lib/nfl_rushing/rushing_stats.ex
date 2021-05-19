@@ -15,12 +15,14 @@ defmodule NflRushing.RushingStats do
               total_pages: nil
             },
             paginated_rushing_stats: nil,
-            sort_by: nil
+            sort_by: nil,
+            player: nil
 
-  @spec get_rushing_stats(integer, String.t() | nil) :: %__MODULE__{}
-  def get_rushing_stats(page, sort_by) do
+  @spec get_rushing_stats(integer, String.t() | nil, String.t()) :: %__MODULE__{}
+  def get_rushing_stats(page, sort_by, player) do
     FileReader.read_file()
     |> format_players_stats()
+    |> maybe_filter_stats_by_player(player)
     |> maybe_sort_stats(sort_by)
     |> add_pagination(page)
   end
@@ -42,6 +44,14 @@ defmodule NflRushing.RushingStats do
           total_pages: total_pages
         }
     }
+  end
+
+  defp maybe_filter_stats_by_player(rushin_stats, ""), do: %__MODULE__{rushin_stats | player: ""}
+
+  defp maybe_filter_stats_by_player(%__MODULE__{all_stats: stats} = stats_struct, player) do
+    filtered_subset = Enum.filter(stats, &(String.downcase(&1.player) =~ String.downcase(player)))
+
+    %{stats_struct | all_stats: filtered_subset, player: player}
   end
 
   defp maybe_sort_stats(rushin_stats, "asc_yds" = sort_by),

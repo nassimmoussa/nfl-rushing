@@ -1,7 +1,9 @@
-<div class="row pt">
-  <div class="col s6">#TODO SEARCH</div>
+<div class="row">
+  <div class="col s6">
+    <%= render "_search_form.html", assigns %>
+  </div>
   <div class="col s3 offset-s1 right">
-    <a class='dropdown-trigger btn' href='#' data-target='sort-by'> Sort By <i class="material-icons" style="line-height: 1;">arrow_drop_down</i></a>
+    <a class='dropdown-trigger btn mt' href='#' data-target='sort-by'> Sort By <i class="material-icons" style="line-height: 1;">arrow_drop_down</i></a>
 
     <ul id='sort-by' class='dropdown-content'>
       <li><a href="#!" phx-click="sort" phx-value-sort_by="asc_yds">ASC Total Rushing Yards</a></li>

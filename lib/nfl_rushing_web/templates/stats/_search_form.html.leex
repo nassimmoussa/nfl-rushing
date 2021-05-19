@@ -1,0 +1,8 @@
+<%= f = form_for :search, "#",
+    [class: "col s12", phx_submit: :search, phx_change: "maybe_clear_search", onsubmit: "event.preventDefault();"] %>
+  <div class="input-field inline">
+    <%= label(f, :player, "player's name") %>
+    <%= text_input f, :player, value: @player %>
+  </div>
+  <%= submit "search", class: "btn ml" %>
+</form>
