@@ -33,6 +33,7 @@ defmodule NflRushing.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:csv, "~> 2.4"},
       {:phoenix, "~> 1.5.9"},
       {:phoenix_live_view, "~> 0.15.1"},
       {:floki, ">= 0.30.0", only: :test},

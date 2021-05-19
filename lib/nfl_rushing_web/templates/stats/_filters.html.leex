@@ -2,18 +2,21 @@
   <div class="col s6">
     <%= render "_search_form.html", assigns %>
   </div>
-  <div class="col s3 offset-s1 right">
-    <a class='dropdown-trigger btn mt' href='#' data-target='sort-by'> Sort By <i class="material-icons" style="line-height: 1;">arrow_drop_down</i></a>
+  <div class="col s6">
+    <div class="right">
+      <a class='dropdown-trigger btn mt' href='#' data-target='sort-by'> Sort By <i class="material-icons" style="line-height: 1;">arrow_drop_down</i></a>
+      <%= link "EXPORT CSV", to: Routes.csv_path(@socket, :export, sort: @sort_by, player: @player), class: "waves-effect waves-light btn mt" %>
 
-    <ul id='sort-by' class='dropdown-content'>
-      <li><a href="#!" phx-click="sort" phx-value-sort_by="asc_yds">ASC Total Rushing Yards</a></li>
-      <li><a href="#!" phx-click="sort" phx-value-sort_by="desc_yds">DESC Total Rushing Yards</a></li>
-      <li class="divider" tabindex="-1"></li>
-      <li><a href="#!" phx-click="sort" phx-value-sort_by="asc_td">ASC Total Rushing Touchdowns</a></li>
-      <li><a href="#!" phx-click="sort" phx-value-sort_by="desc_td">DESC Total Rushing Touchdowns</a></li>
-      <li class="divider" tabindex="-1"></li>
-      <li><a href="#!" phx-click="sort" phx-value-sort_by="asc_lng">ASC Longest Rush</a></li>
-      <li><a href="#!" phx-click="sort" phx-value-sort_by="desc_lng">DESC Longest Rush</a></li>
-    </ul>
+      <ul id='sort-by' class='dropdown-content'>
+        <li><a href="#!" phx-click="sort" phx-value-sort_by="asc_yds">ASC Total Rushing Yards</a></li>
+        <li><a href="#!" phx-click="sort" phx-value-sort_by="desc_yds">DESC Total Rushing Yards</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" phx-click="sort" phx-value-sort_by="asc_td">ASC Total Rushing Touchdowns</a></li>
+        <li><a href="#!" phx-click="sort" phx-value-sort_by="desc_td">DESC Total Rushing Touchdowns</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" phx-click="sort" phx-value-sort_by="asc_lng">ASC Longest Rush</a></li>
+        <li><a href="#!" phx-click="sort" phx-value-sort_by="desc_lng">DESC Longest Rush</a></li>
+      </ul>
+    </div>
   </div>
 </div>
