@@ -436,7 +436,7 @@ defmodule NflRushing.RushingStatsTest do
              } = RushingStats.get_rushing_stats(1, nil, "")
 
       assert Enum.count(all_stats) == 16
-      assert Enum.count(paginated_rushing_stats) == 15
+      assert Enum.count(paginated_rushing_stats) == 10
     end
 
     test "returns the state by page number" do
@@ -451,7 +451,7 @@ defmodule NflRushing.RushingStatsTest do
              } = RushingStats.get_rushing_stats(2, nil, "")
 
       assert Enum.count(all_stats) == 16
-      assert Enum.count(paginated_rushing_stats) == 1
+      assert Enum.count(paginated_rushing_stats) == 6
     end
 
     test "does the sort before pagination" do

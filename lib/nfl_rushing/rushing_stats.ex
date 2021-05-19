@@ -3,7 +3,7 @@ defmodule NflRushing.RushingStats do
   context responsible for processing players rushing stats
   """
 
-  @page_size 15
+  @page_size 10
 
   alias NflRushing.Helpers.FileReader
   alias NflRushing.Schemas.PlayerRushingStats

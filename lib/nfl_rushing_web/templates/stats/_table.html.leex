@@ -1,12 +1,21 @@
- <table>
+ <table class="responsive-table striped">
   <thead>
     <tr>
         <th>Player</th>
         <th>Team</th>
         <th>Position</th>
+        <th>Game Attempts Avg</th>
+        <th>Total Attempts</th>
         <th>Total Rushing Yards</th>
+        <th>Attempt avg yards</th>
         <th>Total Rushing Touchdowns</th>
         <th>Longest Rush</th>
+        <th>game avg yards</th>
+        <th>rushing first downs</th>
+        <th>rushing first downs percentage</th>
+        <th>rushing 20 plus</th>
+        <th>rushing 40 plus</th>
+        <th>rushing fumbles</th>
     </tr>
   </thead>
   <tbody>
@@ -15,9 +24,18 @@
         <td> <%= rushing_stat.player %> </td>
         <td> <%= rushing_stat.team %> </td>
         <td> <%= rushing_stat.position %> </td>
+        <td> <%= rushing_stat.game_attempts_avg %> </td>
+        <td> <%= rushing_stat.total_attempts %> </td>
         <td> <%= rushing_stat.total_yards %> </td>
+        <td> <%= rushing_stat.attempt_avg_yards %> </td>
         <td> <%= rushing_stat.total_rushing_touchdowns %> </td>
         <td> <%= rushing_stat.longest_rush %> </td>
+        <td> <%= rushing_stat.game_avg_yards %> </td>
+        <td> <%= rushing_stat.rushing_first_downs %> </td>
+        <td> <%= rushing_stat.rushing_first_downs_percentage %> </td>
+        <td> <%= rushing_stat.rushing_20_plus %> </td>
+        <td> <%= rushing_stat.rushing_40_plus %> </td>
+        <td> <%= rushing_stat.rushing_fumbles %> </td>
       </tr>
     <% end %>
   </tbody>

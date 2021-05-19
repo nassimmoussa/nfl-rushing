@@ -35,9 +35,18 @@ defmodule NflRushingWeb.StatsLiveTest do
     {:ok, _conn, html} = live(conn, "/")
 
     assert html =~
-             "<thead><tr><th>Player</th><th>Team</th><th>Position</th><th>Total Rushing Yards</th><th>Total Rushing Touchdowns</th><th>Longest Rush</th></tr></thead>"
+             "<thead><tr><th>Player</th><th>Team</th><th>Position</th><th>Game Attempts Avg</th><th>Total Attempts</th>"
 
     assert html =~
-             "<tr><td> Jordan Howard </td><td> CHI </td><td> RB </td><td> 1,313 </td><td> 6 </td><td> 69 </td></tr>"
+             "<th>Total Rushing Yards</th><th>Attempt avg yards</th><th>Total Rushing Touchdowns</th><th>Longest Rush</th>"
+
+    assert html =~
+             "<th>game avg yards</th><th>rushing first downs</th><th>rushing first downs percentage</th>"
+
+    assert html =~
+             "<th>rushing 20 plus</th><th>rushing 40 plus</th><th>rushing fumbles</th></tr></thead"
+
+    assert html =~
+             "<tr><td> Jordan Howard </td><td> CHI </td><td> RB </td><td> 16.8 </td><td> 252 </td><td> 1,313 </td><td> 5.2 </td><td> 6 </td><td> 69 </td><td> 87.5 </td><td> 70 </td><td> 27.8 </td><td> 10 </td><td> 2 </td><td> 1 </td></tr>"
   end
 end
