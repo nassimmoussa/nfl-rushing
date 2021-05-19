@@ -1,5 +1,6 @@
 <ul class="pagination">
   <%= if @pagination.page_number > 1 do %>
+    <li class="waves-effect"><a href="#" phx-click="pagination" phx-value-page="1"><i class="material-icons">first_page</i></a></li>
     <li class="waves-effect"><a href="#" phx-click="pagination" phx-value-page="<%= @pagination.page_number - 1 %>"><i class="material-icons">chevron_left</i></a></li>
   <% end %>
   <%= for idx <- pagination_numbers(@pagination.page_number, @pagination.total_pages) do %>
@@ -9,5 +10,6 @@
   <% end %>
   <%= if @pagination.page_number < @pagination.total_pages do %>
     <li class="waves-effect"><a href="#" phx-click="pagination" phx-value-page="<%= @pagination.page_number + 1 %>"><i class="material-icons">chevron_right</i></a></li>
+    <li class="waves-effect"><a href="#" phx-click="pagination" phx-value-page="<%= @pagination.total_pages %>"><i class="material-icons">last_page</i></a></li>
   <% end %>
 </ul>

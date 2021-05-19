@@ -4,7 +4,8 @@
         <th>Player</th>
         <th>Team</th>
         <th>Position</th>
-        <th>Rushing Attempts Per Game Average</th>
+        <th>Total Rushing Yards</th>
+        <th>Total Rushing Touchdowns</th>
         <th>Longest Rush</th>
     </tr>
   </thead>
@@ -14,7 +15,8 @@
         <td> <%= rushing_stat.player %> </td>
         <td> <%= rushing_stat.team %> </td>
         <td> <%= rushing_stat.position %> </td>
-        <td> <%= rushing_stat.game_attempts_avg %> </td>
+        <td> <%= rushing_stat.total_yards %> </td>
+        <td> <%= rushing_stat.total_rushing_touchdowns %> </td>
         <td> <%= rushing_stat.longest_rush %> </td>
       </tr>
     <% end %>

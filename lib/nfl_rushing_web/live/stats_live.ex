@@ -17,13 +17,10 @@ defmodule NflRushingWeb.StatsLive do
         ) ::
           {:ok, Phoenix.LiveView.Socket.t()}
   def mount(_params, _session, socket) do
-    %{rushing_stats: rushing_stats, pagination: pagination} = RushingStats.get_rushing_stats(1)
+    %{paginated_rushing_stats: rushing_stats, pagination: pagination, sort_by: sort_by} =
+      RushingStats.get_rushing_stats(1, nil)
 
-    {:ok,
-     assign(socket,
-       rushing_stats: rushing_stats,
-       pagination: pagination
-     )}
+    {:ok, assign(socket, rushing_stats: rushing_stats, pagination: pagination, sort_by: sort_by)}
   end
 
   @impl true
@@ -32,13 +29,22 @@ defmodule NflRushingWeb.StatsLive do
   def handle_event("pagination", %{"page" => page}, socket) do
     {page_number, _} = Integer.parse(page)
 
-    %{rushing_stats: rushing_stats, pagination: pagination} =
-      RushingStats.get_rushing_stats(page_number)
+    %{paginated_rushing_stats: rushing_stats, pagination: pagination, sort_by: sort_by} =
+      RushingStats.get_rushing_stats(page_number, socket.assigns.sort_by)
 
     {:noreply,
-     assign(socket,
-       rushing_stats: rushing_stats,
-       pagination: pagination
-     )}
+     assign(socket, rushing_stats: rushing_stats, pagination: pagination, sort_by: sort_by)}
+  end
+
+  def handle_event("sort", %{"sort_by" => sort_by_param}, socket) do
+    if sort_by_param == socket.assigns.sort_by do
+      {:noreply, socket}
+    else
+      %{paginated_rushing_stats: rushing_stats, pagination: pagination, sort_by: sort_by} =
+        RushingStats.get_rushing_stats(1, sort_by_param)
+
+      {:noreply,
+       assign(socket, rushing_stats: rushing_stats, pagination: pagination, sort_by: sort_by)}
+    end
   end
 end
