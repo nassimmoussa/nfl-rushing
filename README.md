@@ -54,4 +54,56 @@ We will evaluate you on your ability to solve the problem defined in the require
 If you have any questions regarding requirements, do not hesitate to email your contact at theScore for clarification.
 
 ### Installation and running this solution
-... TODO
+
+requirements:
+
+- Erlang version 23.1.1 [link to install](https://elixir-lang.org/install.html#installing-erlang) or using [ASDF](https://github.com/asdf-vm/asdf-erlang)
+- Elixir version 1.11.0-otp-23 [link to install](https://elixir-lang.org/install.html) or using [ASDF](https://github.com/asdf-vm/asdf-elixir)
+- Nodejs version 14.15.4 [link to install](https://nodejs.org/en/) or using [ASDF](https://github.com/asdf-vm/asdf-nodejs)
+
+or
+
+- docker version 20.10.6 [link to install](https://docs.docker.com/engine/install/)
+- docker-compose version 1.29.1 [link to install](https://docs.docker.com/compose/install/)
+
+## Running the solution
+
+### running locally
+
+to run the server locally first install dependencies using the command
+
+```$
+mix setup
+```
+
+then running the server using
+
+```$
+mix phx.server
+```
+
+to run the tests use
+
+```$
+mix test
+```
+
+### running on docker
+
+to run the server on docker first install dependencies using the command
+
+```$
+docker-compose run --rm phoenix bash -c "mix setup"
+```
+
+then running the server using
+
+```$
+docker-compose up
+```
+
+to run the tests use
+
+```$
+docker-compose run --rm phoenix bash -c "mix test"
+```
