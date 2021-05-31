@@ -28,7 +28,13 @@ defmodule NflRushingWeb.ChannelCase do
     end
   end
 
-  setup _tags do
+  setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(NflRushing.Repo)
+
+    unless tags[:async] do
+      Ecto.Adapters.SQL.Sandbox.mode(NflRushing.Repo, {:shared, self()})
+    end
+
     :ok
   end
 end

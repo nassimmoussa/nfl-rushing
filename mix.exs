@@ -35,7 +35,10 @@ defmodule NflRushing.MixProject do
     [
       {:csv, "~> 2.4"},
       {:phoenix, "~> 1.5.9"},
+      {:phoenix_ecto, "~> 4.1"},
       {:phoenix_live_view, "~> 0.15.1"},
+      {:ecto_sql, "~> 3.4"},
+      {:postgrex, ">= 0.0.0"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -56,7 +59,10 @@ defmodule NflRushing.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "cmd npm install --prefix assets"]
+      setup: ["deps.get", "ecto.setup", "cmd npm install --prefix assets"],
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end
 end

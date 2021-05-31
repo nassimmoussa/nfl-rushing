@@ -30,6 +30,13 @@ defmodule NflRushingWeb.Telemetry do
         unit: {:native, :millisecond}
       ),
 
+      # Database Metrics
+      summary("nfl_rushing.repo.query.total_time", unit: {:native, :millisecond}),
+      summary("nfl_rushing.repo.query.decode_time", unit: {:native, :millisecond}),
+      summary("nfl_rushing.repo.query.query_time", unit: {:native, :millisecond}),
+      summary("nfl_rushing.repo.query.queue_time", unit: {:native, :millisecond}),
+      summary("nfl_rushing.repo.query.idle_time", unit: {:native, :millisecond}),
+
       # VM Metrics
       summary("vm.memory.total", unit: {:byte, :kilobyte}),
       summary("vm.total_run_queue_lengths.total"),

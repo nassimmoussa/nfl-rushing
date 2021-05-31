@@ -7,6 +7,8 @@ defmodule NflRushing.Application do
 
   def start(_type, _args) do
     children = [
+      # Start the Ecto repository
+      NflRushing.Repo,
       # Start the Telemetry supervisor
       NflRushingWeb.Telemetry,
       # Start the PubSub system
